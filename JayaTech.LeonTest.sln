@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JayaTech.LeonTest.WebAPI", "JayaTech.LeonTest.WebAPI\JayaTech.LeonTest.WebAPI.csproj", "{21A7A914-30E3-4E3E-92F2-2D4F46C454BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JayaTech.LeonTest.Repository", "JayaTech.LeonTest.Repository\JayaTech.LeonTest.Repository.csproj", "{349A0448-678F-4B08-934E-D0CF96360169}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JayaTech.LeonTest.Infrastruct", "JayaTech.LeonTest.Infrastruct\JayaTech.LeonTest.Infrastruct.csproj", "{D219EE7B-0233-44C9-869A-C65EC4A1B941}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JayaTech.LeonTest.Domain", "JayaTech.LeonTest.Domain\JayaTech.LeonTest.Domain.csproj", "{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JayaTech.LeonTest.Domain.Core", "JayaTech.LeonTest.Domain.Core\JayaTech.LeonTest.Domain.Core.csproj", "{D171FA03-7772-4C8D-8F79-544C63008E07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21A7A914-30E3-4E3E-92F2-2D4F46C454BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A7A914-30E3-4E3E-92F2-2D4F46C454BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A7A914-30E3-4E3E-92F2-2D4F46C454BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A7A914-30E3-4E3E-92F2-2D4F46C454BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{349A0448-678F-4B08-934E-D0CF96360169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{349A0448-678F-4B08-934E-D0CF96360169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{349A0448-678F-4B08-934E-D0CF96360169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{349A0448-678F-4B08-934E-D0CF96360169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D219EE7B-0233-44C9-869A-C65EC4A1B941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D219EE7B-0233-44C9-869A-C65EC4A1B941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D219EE7B-0233-44C9-869A-C65EC4A1B941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D219EE7B-0233-44C9-869A-C65EC4A1B941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D171FA03-7772-4C8D-8F79-544C63008E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D171FA03-7772-4C8D-8F79-544C63008E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D171FA03-7772-4C8D-8F79-544C63008E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D171FA03-7772-4C8D-8F79-544C63008E07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7656584-7808-4AD0-95F7-3888A7AADCF2}
+	EndGlobalSection
+EndGlobal
