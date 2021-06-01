@@ -4,5 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JayaTech.LeonTest.Domain\JayaTech.LeonTest.Domain.csproj" />
+    <ProjectReference Include="..\JayaTech.LeonTest.Infrastruct\JayaTech.LeonTest.Infrastruct.csproj" />
+  </ItemGroup>
+
 
 </Project>
