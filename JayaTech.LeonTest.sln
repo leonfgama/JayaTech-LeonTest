@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JayaTech.LeonTest.Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JayaTech.LeonTest.Domain", "JayaTech.LeonTest.Domain\JayaTech.LeonTest.Domain.csproj", "{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JayaTech.LeonTest.Domain.Core", "JayaTech.LeonTest.Domain.Core\JayaTech.LeonTest.Domain.Core.csproj", "{D171FA03-7772-4C8D-8F79-544C63008E07}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08442B38-CB1D-4DD6-890E-477FFCEBBAF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D171FA03-7772-4C8D-8F79-544C63008E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D171FA03-7772-4C8D-8F79-544C63008E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D171FA03-7772-4C8D-8F79-544C63008E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D171FA03-7772-4C8D-8F79-544C63008E07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
