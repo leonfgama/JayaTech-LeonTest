@@ -10,9 +10,7 @@ namespace JayaTech.LeonTest.Domain.Entities
         public decimal SourceAmount { get; set; }
         public string SourceCurrency { get; set; }
         public decimal TargetAmount { get; set; }
-        public string TargetCurrency { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public string TargetCurrency { get; set; }        
         public decimal Tax { get; set; }
-
     }
 }

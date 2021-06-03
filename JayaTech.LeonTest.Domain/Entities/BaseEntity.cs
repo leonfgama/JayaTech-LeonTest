@@ -6,7 +6,7 @@ namespace JayaTech.LeonTest.Domain.Entities
 {
     public class BaseEntity
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public DateTime CreatedDate { get; set; }
     }
 }
