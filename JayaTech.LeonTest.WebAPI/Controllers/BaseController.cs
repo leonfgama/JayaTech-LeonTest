@@ -21,6 +21,28 @@ namespace JayaTech.LeonTest.WebAPI.Controllers
         {
             this._logService = logService;
         }
+        protected HttpResponseMessageViewModel Execute(Func<object> action, string message = "Call was Successful!", bool isSuccess = true)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            try
+            {
+                var result = action();
+                sw.Stop();
+                this._logService.LogApiCall($"", sw.ElapsedMilliseconds);
+
+                HttpResponseMessageViewModel entity = new HttpResponseMessageViewModel(isSuccess, message, result);
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                sw.Stop();
+                this._logService.LogApiCallError(ex.Message, sw.ElapsedMilliseconds);
+                HttpResponseMessageViewModel entity = new HttpResponseMessageViewModel(ex.Message, ex);
+                return entity;
+            }
+        }
+
         protected async Task<HttpResponseMessageViewModel> ExecuteAsync(Func<object> action, string message = "Call was Successful!", bool isSuccess = true)
         {
             Stopwatch sw = new Stopwatch();

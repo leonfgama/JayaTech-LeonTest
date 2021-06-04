@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using JayaTech.LeonTest.Domain.Entities;
+using JayaTech.LeonTest.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,5 +13,6 @@ namespace JayaTech.LeonTest.Repository
     public interface ILogRepository : IBaseRepository<Log>
     {
         Task<int> GetCountAsync();
+        Task<IEnumerable<LogReportViewModel>> GetLogReport();
     }
 }

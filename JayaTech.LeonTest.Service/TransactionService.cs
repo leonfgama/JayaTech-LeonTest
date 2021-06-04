@@ -24,7 +24,7 @@ namespace JayaTech.LeonTest.Service
         public TransactionService(ILogService logService, ITransactionRepository transactionRepository)
             : base(transactionRepository)
         {   
-            this.ExchangeAPIService = new ExchangeAPIService();
+            this.ExchangeAPIService = new ExchangeAPIService(logService);
             this.LogService = logService;
             this.TransactionRepository = transactionRepository;
         }
@@ -59,12 +59,14 @@ namespace JayaTech.LeonTest.Service
 
                 transaction = await base.InsertAsync(transaction);
 
+                this.LogService.Log(Domain.Enum.LogType.TransactionSuccess, true, "Transaction was success!");
+
                 return transaction;
             }
             catch (Exception ex)
             {
-                //TODO LOG
-                throw ex;
+                this.LogService.Log(Domain.Enum.LogType.TransactionFailed, false, "Transaction was failed!");
+                throw new Exception("An error occurred while trying to create a transaction");
             }
         }
 

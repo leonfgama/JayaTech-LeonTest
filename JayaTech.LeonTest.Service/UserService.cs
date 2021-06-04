@@ -1,4 +1,5 @@
 ﻿using JayaTech.LeonTest.Domain.Entities;
+using JayaTech.LeonTest.Domain.Enum;
 using JayaTech.LeonTest.Domain.Interfaces;
 using JayaTech.LeonTest.Domain.ViewModels;
 using JayaTech.LeonTest.Infrastruct.Helpers;

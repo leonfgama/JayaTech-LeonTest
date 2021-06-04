@@ -1,6 +1,7 @@
 ﻿using JayaTech.LeonTest.Domain.Entities;
 using JayaTech.LeonTest.Domain.Enum;
 using JayaTech.LeonTest.Domain.Interfaces;
+using JayaTech.LeonTest.Domain.ViewModels;
 using JayaTech.LeonTest.Infrastruct.Config;
 using JayaTech.LeonTest.Repository;
 using Newtonsoft.Json;
@@ -79,6 +80,50 @@ namespace JayaTech.LeonTest.Service
                 obj.Type = (int)LogType.ApiCallError;
                 obj.Text = message;
                 obj.Duration = elapsedMilliseconds;
+
+                Task.Run(() => base.InsertAsync(obj));
+            });
+        }
+
+        public IEnumerable<LogTypesViewModel> GetLogTypes()
+        {
+            List<LogTypesViewModel> logTypes = new List<LogTypesViewModel>();
+            logTypes.Add(new LogTypesViewModel(1, "Login Success"));
+            logTypes.Add(new LogTypesViewModel(2, "Login Failed"));
+            logTypes.Add(new LogTypesViewModel(3, "Transaction Success"));
+            logTypes.Add(new LogTypesViewModel(4, "Transaction Failed"));
+            logTypes.Add(new LogTypesViewModel(5, "Exchange API Call Duration"));
+            logTypes.Add(new LogTypesViewModel(6, "Exception"));
+            logTypes.Add(new LogTypesViewModel(7, "API Call"));
+            logTypes.Add(new LogTypesViewModel(8, "API Call Error"));
+
+            return logTypes;
+        }
+
+        public async Task<IEnumerable<LogReportViewModel>> GetLogReport()
+        {
+            var logs = await this.LogRepository.GetLogReport();
+            if (logs != null)
+            {
+                logs.ToList().ForEach(x => 
+                {
+                    x.LogTypeTitle = LogTypeHelper.GetLogTypeTitle(x.LogType);
+                    x.AvgTime = x.AvgDuration > 0 ? $"{x.AvgDuration / 1000} Seconds" : "0 Seconds";
+                });
+            }
+
+            return logs;
+        }
+
+        public void Log(LogType type, bool success, string message, long? duration)
+        {
+            Task.Run(() =>
+            {
+                Log obj = new Log();
+                obj.IsSuccess = success;
+                obj.Type = (int)type;
+                obj.Text = message;
+                obj.Duration = duration;
 
                 Task.Run(() => base.InsertAsync(obj));
             });
