@@ -29,8 +29,6 @@ This is an example of how to list things you need to use the software and how to
 
 * **Method:**
   
-  <_The request type_>
-
   `POST`
   
 *  
@@ -67,3 +65,131 @@ This is an example of how to list things you need to use the software and how to
         "The Email field is not a valid e-mail address."
     ]
 }`
+
+  _Login to get authentication token_
+
+* **URL**
+
+  /api/user/login
+
+* **Method:**
+  
+  `POST`
+  
+*  
+   **Body Params:**
+ 
+   `{
+        "username" : "username",    
+        "password" : "password123"
+    }`
+
+* **Success Response:**
+  
+  
+  * **Code:** 200 <br />
+    **Content:** `{
+    "user": {
+        "id": 40,
+        "username": "cristina.mariano",
+        "email": "cristina.mariano@gmail.com"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjQwIiwiRW1haWwiOiJjcmlzdGluYS5tYXJpYW5vQGdtYWlsLmNvbSIsIlVzZXJuYW1lIjoiY3Jpc3RpbmEubWFyaWFubyIsIm5iZiI6MTYyMjgzMjk3OCwiZXhwIjoxNjIyODQwMTc4LCJpYXQiOjE2MjI4MzI5Nzh9.S0BAKpdbC8Dvt6cEaII9_Yy3zpR4xpxBJhA03vmsTqU"
+}`
+
+
+
+**Exchange Transactions**
+----
+  _Make an exchange transaction_
+
+* **URL**
+
+  /api/transaction
+
+* **Method:**
+  
+  `POST`
+  
+*  
+   **Header:**
+ 
+   `Authorization : "Bearer {TOKEN}"`
+
+    **Body Params:**
+ 
+   `{
+        "SourceCurrency": "EUR",
+        "SourceAmount" : 100.50,
+        "TargetCurrency": "BRL"
+    }`
+
+* **Success Response:**
+  
+  
+  * **Code:** 200 <br />
+    **Content:** `{
+    "isSuccess": true,
+    "message": "Call was Successful!",
+    "content": {
+        "userId": 40,
+        "sourceAmount": 100.50,
+        "sourceCurrency": "EUR",
+        "targetAmount": 616.72,
+        "targetCurrency": "BRL",
+        "tax": 6.14,
+        "id": 9,
+        "createdDate": "2021-06-04T18:59:51.51"
+    }
+}`
+ 
+  _Get my transactions_
+
+* **URL**
+
+  /api/transaction/getmytransactions
+
+* **Method:**
+  
+  `GET`
+  
+*
+  
+
+* **Success Response:**
+  
+  
+  * **Code:** 200 <br />
+    **Content:** `{
+    "isSuccess": true,
+    "message": "Call was Successful!",
+    "content": [
+        {
+            "userId": 40,
+            "sourceAmount": 900.50,
+            "sourceCurrency": "EUR",
+            "targetAmount": 5540.73,
+            "targetCurrency": "BRL",
+            "tax": 6.15,
+            "id": 8,
+            "createdDate": "2021-06-04T08:44:15.687"
+        },
+        {
+            "userId": 40,
+            "sourceAmount": 100.50,
+            "sourceCurrency": "EUR",
+            "targetAmount": 616.72,
+            "targetCurrency": "BRL",
+            "tax": 6.14,
+            "id": 9,
+            "createdDate": "2021-06-04T18:59:51.51"
+        }
+    ]
+}`
+
+
+
+
+
+
+
