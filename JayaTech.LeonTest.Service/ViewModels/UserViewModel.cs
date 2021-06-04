@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace JayaTech.LeonTest.Domain.Entities
+namespace JayaTech.LeonTest.Service.ViewModels
 {
-    [Table("[user]")]
-    public class User : BaseEntity
+    public class UserViewModel
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "Field username is required!")]
         public string Username { get; set; }
@@ -17,6 +15,6 @@ namespace JayaTech.LeonTest.Domain.Entities
         [Required(AllowEmptyStrings = false, ErrorMessage = "Field Fullname is required!")]
         public string Fullname { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Field Password is required!")]
-        public string Password { get; set; }       
+        public string Password { get; set; }
     }
 }

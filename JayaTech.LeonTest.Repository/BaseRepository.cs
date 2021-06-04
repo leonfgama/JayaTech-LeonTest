@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using JayaTech.LeonTest.Domain.Entities;
-using JayaTech.LeonTest.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,7 +16,7 @@ namespace JayaTech.LeonTest.Repository
     {
         public BaseRepository(string tableName)
         {
-            this.TableName = TableName;
+            this.TableName = tableName;
         }
 
         public string TableName { get; set; }
@@ -75,17 +74,18 @@ namespace JayaTech.LeonTest.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<TEntity> Insert(TEntity obj, IDbTransaction sqlTransaction = null)
+        public virtual async Task<TEntity> InsertAsync(TEntity obj, IDbTransaction sqlTransaction = null)
         {
             if (obj == null)
                 throw new NullReferenceException($"Entity is null. Table {this.TableName}");
 
+            obj.CreatedDate = DateTime.UtcNow;
             int id = await this.Connection.InsertAsync<TEntity>(obj, sqlTransaction);
 
-            return await this.Get(id, sqlTransaction);
+            return await this.GetAsync(id, sqlTransaction);
         }
 
-        public async Task<TEntity> Update(TEntity obj, IDbTransaction sqlTransaction = null)
+        public virtual async Task<TEntity> UpdateAsync(TEntity obj, IDbTransaction sqlTransaction = null)
         {
             if (obj == null)
                 throw new NullReferenceException($"Entity is null. Table {this.TableName}");
@@ -94,30 +94,30 @@ namespace JayaTech.LeonTest.Repository
             if (!success)
                 throw new Exception("Object not changed!");
 
-            return await this.Get(obj.Id, sqlTransaction);
+            return await this.GetAsync(obj.Id, sqlTransaction);
         }
 
-        public async Task Delete(TEntity obj, IDbTransaction sqlTransaction = null)
+        public virtual async Task DeleteAsync(TEntity obj, IDbTransaction sqlTransaction = null)
         {
-            await this.Delete(obj.Id, sqlTransaction);
+            await this.DeleteAsync(obj.Id, sqlTransaction);
         }
 
-        public async Task Delete(int id, IDbTransaction sqlTransaction = null)
+        public virtual async Task DeleteAsync(int id, IDbTransaction sqlTransaction = null)
         {
             await this.Connection.ExecuteAsync($"DELETE [{this.TableName}] WHERE ID = @Id", new { Id = id }, sqlTransaction);
         }
 
-        public Task<IList<TEntity>> Search(Expression<Func<TEntity, bool>> expression, IDbTransaction sqlTransaction = null)
+        public virtual Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, bool>> expression, IDbTransaction sqlTransaction = null)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> SearchFirst(Expression<Func<TEntity, bool>> expression, IDbTransaction sqlTransaction = null)
+        public virtual Task<TEntity> SearchFirstAsync(Expression<Func<TEntity, bool>> expression, IDbTransaction sqlTransaction = null)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<TEntity> Get(int id, IDbTransaction sqlTransaction = null)
+        public virtual async Task<TEntity> GetAsync(int id, IDbTransaction sqlTransaction = null)
         {
             string sqlCommand = $"SELECT * FROM [{this.TableName}] WHERE Id = @Id";
             return await this.Connection.QueryFirstOrDefaultAsync<TEntity>(sqlCommand, new { Id = id }, sqlTransaction);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JayaTech.LeonTest.Mock
 {
-    public interface ImockBase<TEntity>
+    public interface IMockBase<TEntity>
     {
         TEntity GetOne();
         TEntity GetOneRandom();

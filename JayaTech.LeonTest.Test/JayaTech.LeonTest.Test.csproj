@@ -13,4 +13,11 @@
     <PackageReference Include="coverlet.collector" Version="1.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JayaTech.LeonTest.Domain\JayaTech.LeonTest.Domain.csproj" />
+    <ProjectReference Include="..\JayaTech.LeonTest.Infrastruct\JayaTech.LeonTest.Infrastruct.csproj" />
+    <ProjectReference Include="..\JayaTech.LeonTest.Mock\JayaTech.LeonTest.Mock.csproj" />
+    <ProjectReference Include="..\JayaTech.LeonTest.Service\JayaTech.LeonTest.Service.csproj" />
+  </ItemGroup>
+
 </Project>

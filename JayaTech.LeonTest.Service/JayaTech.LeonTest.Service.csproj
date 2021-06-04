@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JayaTech.LeonTest.Domain\JayaTech.LeonTest.Domain.csproj" />
     <ProjectReference Include="..\JayaTech.LeonTest.Infrastruct\JayaTech.LeonTest.Infrastruct.csproj" />
+    <ProjectReference Include="..\JayaTech.LeonTest.Repository\JayaTech.LeonTest.Repository.csproj" />
   </ItemGroup>
 
 </Project>

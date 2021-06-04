@@ -5,10 +5,10 @@ using System.Text;
 
 namespace JayaTech.LeonTest.Repository
 {
-    public class UserRepository : BaseRepository<User>, IBaseRepository<User>
+    public class TransactionRepository : BaseRepository<Transaction>, IBaseRepository<Transaction>
     {
-        public UserRepository()
-            : base("User")
+        public TransactionRepository()
+            : base("Transaction")
         {
         }
     }
