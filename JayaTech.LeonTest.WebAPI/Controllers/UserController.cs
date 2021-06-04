@@ -54,7 +54,7 @@ namespace JayaTech.LeonTest.WebAPI.Controllers
             if (user == null)
                 return NotFound(new { message = "User or password is incorrect!" });
 
-            var token = TokenService.GenerateToken(user);
+            var token = TokenService.GenerateToken(user);            
             return new
             {
                 user = user,

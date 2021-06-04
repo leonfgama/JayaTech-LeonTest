@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace JayaTech.LeonTest.WebAPI.Controllers
@@ -40,6 +41,18 @@ namespace JayaTech.LeonTest.WebAPI.Controllers
                 HttpResponseMessageViewModel entity = new HttpResponseMessageViewModel(ex.Message, ex);
                 return entity;
             }
+        }
+
+        internal int GetUserId()
+        {   
+            ClaimsPrincipal principal = (ClaimsPrincipal)HttpContext.User;
+            if (principal != null)
+            {
+                string userId = principal.Claims.FirstOrDefault(x => x.Type == "Id").Value;
+                return !string.IsNullOrWhiteSpace(userId) ? Convert.ToInt32(userId) : 0;
+            }
+
+            return 0;
         }
     }
 }

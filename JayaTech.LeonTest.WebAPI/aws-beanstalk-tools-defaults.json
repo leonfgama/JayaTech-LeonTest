@@ -1,0 +1,20 @@
+
+{
+    "region" : "us-east-2",
+    "configuration" : "Debug",
+    "framework"     : "netcoreapp3.1",
+    "self-contained" : false,
+    "application"    : "JayaTechLeonTestWebAPI",
+    "environment"    : "JayaTechLeonTestWebAPI-prod",
+    "enable-xray"    : false,
+    "enhanced-health-type" : "basic",
+    "additional-options"   : "\"aws:autoscaling:launchconfiguration,SecurityGroups\"=\"sg-f638e980\";\"aws:ec2:vpc,Subnets\"=\"subnet-9f6f9de2\"",
+    "solution-stack"       : "64bit Amazon Linux 2 v2.2.0 running .NET Core",
+    "environment-type"     : "SingleInstance",
+    "cname"                : "jayatechleontestwebapi-prod",
+    "instance-type"        : "t2.micro",
+    "key-pair"             : "",
+    "instance-profile"     : "aws-elasticbeanstalk-ec2-role",
+    "service-role"         : "aws-elasticbeanstalk-service-role",
+    "proxy-server"         : "nginx"
+}

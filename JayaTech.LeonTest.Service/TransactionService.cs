@@ -20,11 +20,13 @@ namespace JayaTech.LeonTest.Service
     {
         public ExchangeAPIService ExchangeAPIService { get; set; }
         public ILogService LogService { get; set; }
+        public ITransactionRepository TransactionRepository { get; set; }
         public TransactionService(ILogService logService, ITransactionRepository transactionRepository)
             : base(transactionRepository)
-        {
+        {   
             this.ExchangeAPIService = new ExchangeAPIService();
             this.LogService = logService;
+            this.TransactionRepository = transactionRepository;
         }
 
         private Transaction ToTransaction(TransactionExchangeViewModel viewModel)
@@ -64,6 +66,11 @@ namespace JayaTech.LeonTest.Service
                 //TODO LOG
                 throw ex;
             }
+        }
+
+        public Task<IEnumerable<Transaction>> GetTransactionsByUserId(int userId)
+        {
+            return this.TransactionRepository.GetTransactionByUserId(userId);
         }
     }
 }

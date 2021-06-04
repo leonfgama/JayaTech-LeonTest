@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace JayaTech.LeonTest.Repository
 {
     public interface ITransactionRepository : IBaseRepository<Transaction>
-    {   
+    {
+        Task<IEnumerable<Transaction>> GetTransactionByUserId(int userId);
     }
 }

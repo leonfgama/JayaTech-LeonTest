@@ -22,9 +22,9 @@ namespace JayaTech.LeonTest.WebAPI.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim("Id", user.Username.ToString()),
-                    new Claim("Email", user.Email.ToString()),
-                    new Claim("Username", user.Username.ToString()),
+                    new Claim("Id", user.Id.ToString()),
+                    new Claim("Email", user.Email),
+                    new Claim("Username", user.Username)
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
