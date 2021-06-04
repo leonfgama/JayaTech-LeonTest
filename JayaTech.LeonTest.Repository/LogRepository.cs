@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JayaTech.LeonTest.Repository
 {
-    public class LogRepository : BaseRepository<Log>, IBaseRepository<Log>
+    public class LogRepository : BaseRepository<Log>, ILogRepository
     {
         public LogRepository()
             : base("Log")

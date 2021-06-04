@@ -1,7 +1,8 @@
 ﻿using JayaTech.LeonTest.Domain.Entities;
+using JayaTech.LeonTest.Domain.Interfaces;
+using JayaTech.LeonTest.Domain.ViewModels;
 using JayaTech.LeonTest.Infrastruct.Config;
 using JayaTech.LeonTest.Repository;
-using JayaTech.LeonTest.Service.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,15 +16,15 @@ using System.Threading.Tasks;
 
 namespace JayaTech.LeonTest.Service
 {
-    public class TransactionService : BaseService<Transaction>, IBaseService<Transaction>
+    public class TransactionService : BaseService<Transaction>, ITransactionService
     {
         public ExchangeAPIService ExchangeAPIService { get; set; }
-        public LogService LogService { get; set; }
-        public TransactionService()
-            : base(new TransactionRepository())
+        public ILogService LogService { get; set; }
+        public TransactionService(ILogService logService, ITransactionRepository transactionRepository)
+            : base(transactionRepository)
         {
             this.ExchangeAPIService = new ExchangeAPIService();
-            this.LogService = new LogService(new LogRepository());
+            this.LogService = logService;
         }
 
         private Transaction ToTransaction(TransactionExchangeViewModel viewModel)

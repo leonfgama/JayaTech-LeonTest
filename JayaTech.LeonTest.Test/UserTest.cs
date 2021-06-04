@@ -3,11 +3,12 @@ using JayaTech.LeonTest.Repository;
 using JayaTech.LeonTest.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Threading.Tasks;
 
 namespace JayaTech.LeonTest.Test
 {
     [TestClass]
-    public class UserTest : ITestBase
+    public class UserTest
     {
         public UserTest()
         {
@@ -17,18 +18,8 @@ namespace JayaTech.LeonTest.Test
         public UserService UserService { get; set; }
         public UserMock UserMock { get; set; }
 
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Get()
-        {
-            throw new NotImplementedException();
-        }
-
         [TestMethod]
-        public void Insert()
+        public void TestCRUD()
         {
             var user = this.UserMock.GetOneRandom();
 
@@ -36,11 +27,11 @@ namespace JayaTech.LeonTest.Test
 
             Assert.AreEqual(user.Username, insertedUser.Username);
 
-        }
+            this.UserService.Delete(insertedUser);
 
-        public void Update()
-        {
-            throw new NotImplementedException();
+            var deletedUser = this.UserService.GetAsync(insertedUser.Id).Result;
+
+            Assert.IsNull(deletedUser);
         }
     }
 }

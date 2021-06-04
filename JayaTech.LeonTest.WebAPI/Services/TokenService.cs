@@ -1,4 +1,5 @@
 ﻿using JayaTech.LeonTest.Domain.Entities;
+using JayaTech.LeonTest.Domain.ViewModels;
 using JayaTech.LeonTest.Infrastruct.Config;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -13,7 +14,7 @@ namespace JayaTech.LeonTest.WebAPI.Services
 {
     public class TokenService
     {
-        public static string GenerateToken(User user)
+        public static string GenerateToken(UserLoginViewModel user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
@@ -21,7 +22,9 @@ namespace JayaTech.LeonTest.WebAPI.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Username.ToString())
+                    new Claim("Id", user.Username.ToString()),
+                    new Claim("Email", user.Email.ToString()),
+                    new Claim("Username", user.Username.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

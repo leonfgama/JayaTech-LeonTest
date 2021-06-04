@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\JayaTech.LeonTest.Domain\JayaTech.LeonTest.Domain.csproj" />
     <ProjectReference Include="..\JayaTech.LeonTest.Infrastruct\JayaTech.LeonTest.Infrastruct.csproj" />
+    <ProjectReference Include="..\JayaTech.LeonTest.Service\JayaTech.LeonTest.Service.csproj" />
   </ItemGroup>
 
 

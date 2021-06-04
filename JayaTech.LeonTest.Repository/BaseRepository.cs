@@ -27,7 +27,7 @@ namespace JayaTech.LeonTest.Repository
             get
             {
                 if (string.IsNullOrWhiteSpace(_connectionString))
-                    _connectionString = @"Server=jayatech.con4fsljjivp.us-east-2.rds.amazonaws.com;Database=JayaTech;User Id=admin;Password=admin123;";
+                    _connectionString = @"Server=jayatech.con4fsljjivp.us-east-2.rds.amazonaws.com;Database=JayaTech;User Id=admin;Password=admin123;MultipleActiveResultSets=True";
 
                 return _connectionString;
             }
@@ -46,6 +46,10 @@ namespace JayaTech.LeonTest.Repository
                 {
                     _connection = this.GetConnection();
                 }
+
+                if (_connection.State == ConnectionState.Closed)                
+                    _connection.Open();
+
                 return _connection;
             }
             set
@@ -71,7 +75,7 @@ namespace JayaTech.LeonTest.Repository
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            GC.SuppressFinalize(this);
         }
 
         public virtual async Task<TEntity> InsertAsync(TEntity obj, IDbTransaction sqlTransaction = null)
@@ -121,6 +125,16 @@ namespace JayaTech.LeonTest.Repository
         {
             string sqlCommand = $"SELECT * FROM [{this.TableName}] WHERE Id = @Id";
             return await this.Connection.QueryFirstOrDefaultAsync<TEntity>(sqlCommand, new { Id = id }, sqlTransaction);
+        }
+
+        public void Delete(int id, IDbTransaction sqlTransaction = null)
+        {
+            this.Connection.ExecuteAsync($"DELETE [{this.TableName}] WHERE ID = @Id", new { Id = id }, sqlTransaction);
+        }
+
+        public void Delete(TEntity obj, IDbTransaction sqlTransaction = null)
+        {
+            this.Delete(obj.Id, sqlTransaction);
         }
     }
 }

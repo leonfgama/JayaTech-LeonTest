@@ -10,7 +10,9 @@ namespace JayaTech.LeonTest.Domain.Enum
         LoginFailed = 2,
         TransactionSuccess = 3,
         TransactionFailed = 4,
-        ExchangeAPICallDuration = 5,
-        Exception = 6
+        ExchangeApiCallDuration = 5,
+        Exception = 6,
+        ApiCall = 7,
+        ApiCallError = 8
     }
 }

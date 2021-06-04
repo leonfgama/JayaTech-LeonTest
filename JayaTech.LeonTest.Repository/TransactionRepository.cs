@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JayaTech.LeonTest.Repository
 {
-    public class TransactionRepository : BaseRepository<Transaction>, IBaseRepository<Transaction>
+    public class TransactionRepository : BaseRepository<Transaction>, ITransactionRepository
     {
         public TransactionRepository()
             : base("Transaction")

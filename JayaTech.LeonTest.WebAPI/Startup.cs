@@ -1,4 +1,7 @@
+using JayaTech.LeonTest.Domain.Interfaces;
 using JayaTech.LeonTest.Infrastruct.Config;
+using JayaTech.LeonTest.Repository;
+using JayaTech.LeonTest.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +31,14 @@ namespace JayaTech.LeonTest.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ILogRepository, LogRepository>();
+
+            services.AddScoped<ITransactionService, TransactionService>();
+            services.AddScoped<ILogService, LogService>();
+            services.AddScoped<IUserService, UserService>();
+
             services.AddCors();
             services.AddControllers();
 

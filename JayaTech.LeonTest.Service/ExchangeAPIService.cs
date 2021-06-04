@@ -1,7 +1,7 @@
 ﻿using JayaTech.LeonTest.Domain.Entities;
+using JayaTech.LeonTest.Domain.ViewModels;
 using JayaTech.LeonTest.Infrastruct.Config;
 using JayaTech.LeonTest.Repository;
-using JayaTech.LeonTest.Service.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;

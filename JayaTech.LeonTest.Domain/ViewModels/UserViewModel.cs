@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace JayaTech.LeonTest.Service.ViewModels
+namespace JayaTech.LeonTest.Domain.ViewModels
 {
     public class UserViewModel
     {
@@ -14,7 +14,5 @@ namespace JayaTech.LeonTest.Service.ViewModels
         [EmailAddress]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Field Fullname is required!")]
         public string Fullname { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Field Password is required!")]
-        public string Password { get; set; }
     }
 }

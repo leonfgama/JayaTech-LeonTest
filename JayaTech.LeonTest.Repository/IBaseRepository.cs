@@ -12,6 +12,8 @@ namespace JayaTech.LeonTest.Repository
     {
         Task<TEntity> InsertAsync(TEntity obj, IDbTransaction sqlTransaction = null);
         Task<TEntity> UpdateAsync(TEntity obj, IDbTransaction sqlTransaction = null);
+        void Delete(int id, IDbTransaction sqlTransaction = null);
+        void Delete(TEntity obj, IDbTransaction sqlTransaction = null);
         Task DeleteAsync(TEntity obj, IDbTransaction sqlTransaction = null);
         Task DeleteAsync(int id, IDbTransaction sqlTransaction = null);
         Task<IEnumerable<TEntity>> SearchAsync(Expression<Func<TEntity, bool>> expression, IDbTransaction sqlTransaction = null);
